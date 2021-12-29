@@ -11,4 +11,4 @@ class CustomUser(AbstractUser):
                                                                ('Swimming','Swimming'),('Sleeping','Sleeping'),('Sports','Sports'),('Gaming','Gaming')])
 
     def __str__(self):
-        return self.email
+        return str(self.id)
