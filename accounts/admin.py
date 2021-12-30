@@ -11,8 +11,15 @@ class CustomUserAdmin(UserAdmin):
     model = CustomUser
     list_display = ['email', 'username',]
     fieldsets =  UserAdmin.fieldsets + (
-        ("Extra information", {"fields": ("phonenumber",'gender','profilePicture','interests'),},
+        ("Extra information", {"fields": ("phonenumber",'gender','profilePicture','interests', 'user'),},
         
         ),
     )
+    def save_model(self, request, obj, form, change):
+        print(request.user)
+        obj.user = request.user
+        obj.save()
+        print(obj.user)
+
+
 admin.site.register(CustomUser, CustomUserAdmin)
