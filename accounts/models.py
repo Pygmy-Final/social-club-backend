@@ -1,8 +1,13 @@
 from django.contrib.auth.models import AbstractUser
 from django.db import models
 from multiselectfield import MultiSelectField
+from django.contrib.auth import get_user_model
+from django.conf import settings
+
 
 class CustomUser(AbstractUser):
+
+    user          = models.OneToOneField(settings.AUTH_USER_MODEL, related_name="profile", on_delete=models.CASCADE, null = True)
     gender        = models.CharField(max_length=26,choices=[('Male', 'Male'), ('Female', 'Female')],default='Male')
     phonenumber   = models.IntegerField(null=True)
     profilePicture= models.ImageField(upload_to ='ProfilePictures/', default='ProfilePictures/default.jpg')
@@ -12,3 +17,13 @@ class CustomUser(AbstractUser):
 
     def __str__(self):
         return str(self.id)
+
+class Follow(models.Model):
+
+	to_user = models.ForeignKey(settings.AUTH_USER_MODEL, related_name='to_user', on_delete=models.CASCADE)
+	from_user = models.ForeignKey(settings.AUTH_USER_MODEL, related_name='from_user', on_delete=models.CASCADE)
+	timestamp = models.DateTimeField(auto_now_add=True)
+
+	def __str__(self):
+		return "From {}, to {}".format(self.from_user.username, self.to_user.username)
+

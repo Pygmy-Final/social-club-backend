@@ -42,12 +42,16 @@ INSTALLED_APPS = [
     'debug_toolbar',
     'rest_framework',
     'rest_framework_simplejwt',
+    'dj_rest_auth',
     'corsheaders',
+    'rest_framework.authtoken',
 
     # Local
-    'accounts',
+    
     'pages',
     'events',
+    'chat',
+    'accounts',
 ]
 
 # MIDDLEWARE
