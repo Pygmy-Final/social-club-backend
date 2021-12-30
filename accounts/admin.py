@@ -3,7 +3,7 @@ from django.contrib.auth import get_user_model
 from django.contrib.auth.admin import UserAdmin
 
 from .forms import CustomUserCreationForm, CustomUserChangeForm
-from .models import CustomUser
+from .models import CustomUser, Follow
 
 class CustomUserAdmin(UserAdmin):
     add_form = CustomUserCreationForm
@@ -15,11 +15,23 @@ class CustomUserAdmin(UserAdmin):
         
         ),
     )
+
     def save_model(self, request, obj, form, change):
-        print(request.user)
         obj.user = request.user
         obj.save()
-        print(obj.user)
 
+class FollowAdmin(admin.ModelAdmin):
+    list_display = ['to_user', 'from_user',]
+    model = Follow
+
+    def save_model(self, request, obj, form, change):
+        
+        if obj.from_user != obj.to_user:
+            obj.from_user = request.user
+            print(obj)
+            obj.save()
+
+# filter duplicate relationships in frontend, by looping through all objects.
 
 admin.site.register(CustomUser, CustomUserAdmin)
+admin.site.register(Follow, FollowAdmin)
