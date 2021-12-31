@@ -1,10 +1,10 @@
 import fire
 import requests
 
-API_HOST = "http://localhost:8000"
-RESOURCE_URI = "things"
+API_HOST = "https://project-final-401.herokuapp.com"
+RESOURCE_URI = "accounts/customuser"
 USERNAME = "admin"
-PASSWORD = "admin"
+PASSWORD = "12345"
 
 
 class ApiTester:
@@ -38,7 +38,7 @@ class ApiTester:
         """
         access_token = self.fetch_tokens()[0]
 
-        url = f"{self.host}/api/v1/{RESOURCE_URI}/"
+        url = f"{self.host}/{RESOURCE_URI}/"
 
         headers = {
             "Authorization": f"Bearer {access_token}",
@@ -56,7 +56,7 @@ class ApiTester:
         """
         access_token = self.fetch_tokens()[0]
 
-        url = f"{self.host}/api/v1/{RESOURCE_URI}/{id}"
+        url = f"{self.host}/{RESOURCE_URI}/{id}"
 
         headers = {
             "Authorization": f"Bearer {access_token}",
@@ -77,7 +77,7 @@ class ApiTester:
 
         access_token = self.fetch_tokens()[0]
 
-        url = f"{self.host}/api/v1/{RESOURCE_URI}/"
+        url = f"{self.host}/{RESOURCE_URI}/"
 
         headers = {
             "Authorization": f"Bearer {access_token}",

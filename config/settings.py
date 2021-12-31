@@ -47,11 +47,9 @@ INSTALLED_APPS = [
     'events',
     'chat',
     'accounts',
+    'django_filters',
 ]
 
-# MIDDLEWARE
-# ------------------------------------------------------------------------------
-# https://docs.djangoproject.com/en/dev/ref/settings/#middleware
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     "corsheaders.middleware.CorsMiddleware",
@@ -65,8 +63,6 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
-# URLS
-# ------------------------------------------------------------------------------
 ROOT_URLCONF = "config.urls"
 WSGI_APPLICATION = "config.wsgi.application"
 TEMPLATES = [
@@ -85,9 +81,6 @@ TEMPLATES = [
     },
 ]
 
-# DATABASES
-# ------------------------------------------------------------------------------
-# https://docs.djangoproject.com/en/dev/ref/settings/#databases
 DATABASES = {
     "default": {
         "ENGINE": env.str("DATABASE_ENGINE"),
@@ -99,9 +92,6 @@ DATABASES = {
     }
 }
 
-# PASSWORDS
-# ------------------------------------------------------------------------------
-# https://docs.djangoproject.com/en/dev/ref/settings/#auth-password-validators
 AUTH_PASSWORD_VALIDATORS = [
     {
         'NAME': 'django.contrib.auth.password_validation.UserAttributeSimilarityValidator',
@@ -117,18 +107,10 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
-# INTERNATIONALIZATION
-# ------------------------------------------------------------------------------
-# https://docs.djangoproject.com/en/dev/topics/i18n/
-# https://docs.djangoproject.com/en/dev/ref/settings/#language-code
 LANGUAGE_CODE = 'en-us'
-# https://docs.djangoproject.com/en/dev/ref/settings/#time-zone
 TIME_ZONE = 'UTC'
-# https://docs.djangoproject.com/en/dev/ref/settings/#std:setting-USE_I18N
 USE_I18N = True
-# https://docs.djangoproject.com/en/dev/ref/settings/#use-l10n
 USE_L10N = True
-# https://docs.djangoproject.com/en/dev/ref/settings/#use-tz
 USE_TZ = True
 
 
@@ -191,7 +173,8 @@ REST_FRAMEWORK = {
     ],
     'DEFAULT_AUTHENTICATION_CLASSES': [  
         'rest_framework_simplejwt.authentication.JWTAuthentication',      
-        'rest_framework.authentication.SessionAuthentication',        
+        'rest_framework.authentication.SessionAuthentication',
+        'rest_framework.authentication.TokenAuthentication',        
         'rest_framework.authentication.BasicAuthentication',          
     ]
 }

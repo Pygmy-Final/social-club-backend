@@ -14,9 +14,9 @@ class CustomUserAdmin(UserAdmin):
         ),
     )
 
-    def save_model(self, request, obj, form, change):
-        obj.user = request.user
-        obj.save()
+    # def save_model(self, request, obj, form, change):
+    #     obj.user = request.user
+    #     obj.save()
 
 class FollowAdmin(admin.ModelAdmin):
     list_display = ['to_user', 'from_user',]
@@ -26,7 +26,6 @@ class FollowAdmin(admin.ModelAdmin):
         
         if obj.from_user != obj.to_user:
             obj.from_user = request.user
-            print(obj)
             obj.save()
 
 # filter duplicate relationships in frontend, by looping through all objects.
