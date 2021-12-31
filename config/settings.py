@@ -1,9 +1,6 @@
 from pathlib import Path
 import environ
 
-# GENERAL
-# ------------------------------------------------------------------------------
-# Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 env = environ.Env(
     DEBUG=(bool, False),
@@ -102,7 +99,6 @@ DATABASES = {
     }
 }
 
-WSGI_APPLICATION = "config.wsgi.application"
 # PASSWORDS
 # ------------------------------------------------------------------------------
 # https://docs.djangoproject.com/en/dev/ref/settings/#auth-password-validators
@@ -193,10 +189,10 @@ REST_FRAMEWORK = {
     'DEFAULT_PERMISSION_CLASSES': [
         'rest_framework.permissions.IsAuthenticated',
     ],
-    'DEFAULT_AUTHENTICATION_CLASSES': [        
+    'DEFAULT_AUTHENTICATION_CLASSES': [  
+        'rest_framework_simplejwt.authentication.JWTAuthentication',      
         'rest_framework.authentication.SessionAuthentication',        
-        'rest_framework.authentication.BasicAuthentication',        
-        'rest_framework_simplejwt.authentication.JWTAuthentication',
+        'rest_framework.authentication.BasicAuthentication',          
     ]
 }
 
