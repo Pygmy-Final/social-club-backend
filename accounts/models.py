@@ -1,7 +1,6 @@
 from django.contrib.auth.models import AbstractUser
 from django.db import models
 from multiselectfield import MultiSelectField
-from django.contrib.auth import get_user_model
 from django.conf import settings
 
 

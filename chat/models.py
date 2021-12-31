@@ -1,11 +1,5 @@
 from django.db import models
-# from accounts.models import CustomUser
-from django.contrib.auth import get_user_model
-from django.contrib.auth.models import User
 from django.conf import settings
-
-# Create your models here.
-
 
 class Message(models.Model):
 
@@ -17,3 +11,6 @@ class Message(models.Model):
 
     class Meta:
         ordering = ("date_created",)
+
+    def __str__(self):
+        return self.message

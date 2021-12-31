@@ -3,6 +3,7 @@ from django.contrib.auth import get_user_model
 from django.db.models.fields import IntegerField
 from django_mysql.models import ListTextField
 from multiselectfield import MultiSelectField
+from django.conf import settings
 
 class Event(models.Model):
     EventName        = models.CharField(max_length=256)
@@ -12,6 +13,8 @@ class Event(models.Model):
                                                                   ('Hiking','Hiking'), ('Drawing', 'Drawing'),('Photography', 'Photography'),
                                                                   ('Swimming','Swimming'),('Sleeping','Sleeping'),('Sports','Sports'),('Gaming','Gaming')])
     EventStartTime  = models.DateTimeField()
-    EventCreator    = models.ForeignKey(get_user_model(),on_delete=models.CASCADE, null=True)
+    EventCreator    = models.ForeignKey(settings.AUTH_USER_MODEL,on_delete=models.CASCADE, null=True)
     EventParticipants = ListTextField(  base_field=IntegerField(),
                                         size=50,  null=True) 
+
+

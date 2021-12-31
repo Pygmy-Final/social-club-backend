@@ -47,8 +47,6 @@ INSTALLED_APPS = [
     'rest_framework.authtoken',
 
     # Local
-    
-    'pages',
     'events',
     'chat',
     'accounts',

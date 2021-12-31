@@ -6,8 +6,9 @@ from rest_framework_simplejwt import views as jwt_views
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('accounts/', include('allauth.urls')),
-    path('', include('pages.urls')),
-    path('events/',include('events.urls')),
+    path('accounts/customuser/', include('accounts.urls')),
+    path('events/event/',include('events.urls')),
+    path('chat/message/', include('chat.urls')),
     path('api/token/', jwt_views.TokenObtainPairView.as_view(), name = 'token_obtain_pair'),
     path('api/token/refresh/', jwt_views.TokenRefreshView.as_view(), name = 'token_refresh'),
 ]
