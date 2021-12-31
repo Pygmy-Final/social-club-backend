@@ -9,14 +9,14 @@ from rest_framework.permissions import IsAuthenticated
 class UserProfileListView(generics.ListCreateAPIView):
     queryset = CustomUser.objects.all()
     serializer_class = UserProfileSerializer
-    # permission_classes = [IsAuthenticated,]
+    permission_classes = (IsAuthenticated,)
 
 
 class UserProfileDetailView(generics.RetrieveUpdateDestroyAPIView):
     queryset = CustomUser.objects.all()
     serializer_class = UserProfileSerializer
-    # permission_classes = [EventUserWritePermiss,]
+    permission_classes = (IsAuthenticated,)
 
 
 
-# follow has a view ***********
+# follow has views ***********
