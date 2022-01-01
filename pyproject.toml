@@ -23,6 +23,8 @@ django-environ = "^0.8.1"
 django-cors-headers = "^3.10.1"
 heroku = "^0.1.4"
 dj-rest-auth = "^2.2.1"
+fire = "^0.4.0"
+django-filter = "^21.1"
 
 [tool.poetry.dev-dependencies]
 flake8 = "^4.0.1"

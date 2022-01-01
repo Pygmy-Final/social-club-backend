@@ -1,5 +1,4 @@
 from django.db import models
-from django.contrib.auth import get_user_model
 from django.db.models.fields import IntegerField
 from django_mysql.models import ListTextField
 from multiselectfield import MultiSelectField
