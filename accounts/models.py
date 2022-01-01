@@ -3,7 +3,6 @@ from django.db import models
 from multiselectfield import MultiSelectField
 from django.conf import settings
 
-
 class CustomUser(AbstractUser):
     # user for chat id for current
     user          = models.OneToOneField(settings.AUTH_USER_MODEL, related_name="profile", on_delete=models.CASCADE, null = True)
@@ -30,6 +29,7 @@ class Follow(models.Model):
 	from_user = models.ForeignKey(settings.AUTH_USER_MODEL, related_name='from_user', on_delete=models.CASCADE)
 	timestamp = models.DateTimeField(auto_now_add=True)
 
+
 	def __str__(self):
-		return "From {}, to {}".format(self.from_user.username, self.to_user.username)
+		return str(self.id)
 
