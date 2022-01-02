@@ -28,7 +28,7 @@ class UserProfileDetailView(generics.RetrieveUpdateDestroyAPIView, UserWritePerm
 
 
 class FollowListView(generics.ListAPIView):
-    queryset = Follow.objects.all()
+    # queryset = Follow.objects.all()
     serializer_class = FollowSerializer
     permission_classes = (IsAuthenticated,)
     filter_backends= [SearchFilter]
