@@ -17,12 +17,12 @@ class UserProfileListView(generics.ListAPIView):
         return queryset
 
 class UserProfileCreateView(generics.CreateAPIView):
-    queryset = CustomUser.objects.all()
+    queryset = CustomUser.objects.all() 
     serializer_class = UserProfileSerializer
     permission_classes = (AllowAny,)
 
 class UserProfileDetailView(generics.RetrieveUpdateDestroyAPIView, UserWritePermiss):
-    queryset = CustomUser.objects.all()
+    queryset = CustomUser.objects.all() 
     serializer_class = UserProfileSerializer
     permission_classes = (UserWritePermiss,)
 
