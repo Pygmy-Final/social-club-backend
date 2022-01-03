@@ -5,6 +5,14 @@ class UserProfileSerializer(serializers.ModelSerializer):
     class Meta:
         model = CustomUser
         fields = ('username','first_name','last_name','email','password','gender','phonenumber','profilePicture','interests')
+    def validate_password(self, value: str) -> str:
+        """
+        Hash value passed by user.
+
+        :param value: password of a user
+        :return: a hashed version of the password
+        """
+        return make_password(value)
 
 class FollowSerializer(serializers.ModelSerializer):
 
@@ -16,3 +24,7 @@ class FollowSerializer(serializers.ModelSerializer):
     class Meta:
         model = Follow
         fields = "__all__"
+
+
+from django.contrib.auth.hashers import make_password
+

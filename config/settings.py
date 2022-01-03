@@ -163,6 +163,8 @@ ACCOUNT_LOGOUT_REDIRECT_URL = 'home'
 AUTHENTICATION_BACKENDS = (
     "django.contrib.auth.backends.ModelBackend",
     "allauth.account.auth_backends.AuthenticationBackend",
+    'django.contrib.auth.backends.RemoteUserBackend',
+    'django.contrib.auth.backends.AllowAllUsersModelBackend',
 )
 # https://django-allauth.readthedocs.io/en/latest/configuration.html
 ACCOUNT_SESSION_REMEMBER = True

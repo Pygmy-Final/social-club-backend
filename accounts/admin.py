@@ -3,20 +3,17 @@ from django.contrib.auth.admin import UserAdmin
 from .forms import CustomUserCreationForm, CustomUserChangeForm
 from .models import CustomUser, Follow
 
+
 class CustomUserAdmin(UserAdmin):
     add_form = CustomUserCreationForm
     form = CustomUserChangeForm
     model = CustomUser
-    list_display = ['email', 'username',]
+    list_display = ['email', 'username']
     fieldsets =  UserAdmin.fieldsets + (
         ("Extra information", {"fields": ("phonenumber",'gender','profilePicture','interests', 'user'),},
         
         ),
     )
-
-    # def save_model(self, request, obj, form, change):
-    #     obj.user = request.user
-    #     obj.save()
 
 class FollowAdmin(admin.ModelAdmin):
     list_display = ['to_user', 'from_user',]
