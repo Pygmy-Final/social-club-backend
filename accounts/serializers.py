@@ -22,7 +22,7 @@ class UserProfileSerializer(serializers.ModelSerializer):
     interests = fields.MultipleChoiceField(choices=interests_list)
     class Meta:
         model = CustomUser
-        fields = ('username','first_name','last_name','email','password','gender','phonenumber','profilePicture','interests')
+        fields = ('id','username','first_name','last_name','email','password','gender','phonenumber','profilePicture','interests')
     
     def validate_password(self, value: str) -> str:
         """
