@@ -5,9 +5,14 @@ from rest_framework import generics
 from .permissions import EventUserWritePermiss
 from rest_framework.permissions import IsAuthenticated
 
-class EventsList(generics.ListCreateAPIView):
+class EventsList(generics.ListAPIView):
     queryset = Event.objects.all()
     serializer_class = EventListSerialzer
+    permission_classes = (IsAuthenticated,)
+
+class EventCreateView(generics.CreateAPIView):
+    queryset = Event.objects.all()
+    serializer_class = EventCreateAndDeleteSerialzer
     permission_classes = (IsAuthenticated,)
 
 class EventsDetail(generics.RetrieveUpdateDestroyAPIView,EventUserWritePermiss):
