@@ -1,5 +1,7 @@
 from pathlib import Path
 import environ
+from datetime import timedelta
+from django.conf import settings
 
 BASE_DIR = Path(__file__).resolve().parent.parent
 env = environ.Env(
@@ -184,6 +186,12 @@ REST_FRAMEWORK = {
         'rest_framework.authentication.TokenAuthentication',        
         'rest_framework.authentication.BasicAuthentication',          
     ]
+}
+SIMPLE_JWT = {
+    'ACCESS_TOKEN_LIFETIME': timedelta(days=5),
+    'REFRESH_TOKEN_LIFETIME': timedelta(days=10),
+    # 'ROTATE_REFRESH_TOKENS': False,
+    # 'UPDATE_LAST_LOGIN': False,
 }
 
 CORS_ORIGIN_WHITELIST = tuple(env.list("ALLOWED_ORIGINS"))

@@ -33,11 +33,29 @@ class UserProfileSerializer(serializers.ModelSerializer):
         """
         return make_password(value)
 
+class UserSerializer(serializers.ModelSerializer):
+    interests = fields.MultipleChoiceField(choices=interests_list)
+    class Meta:
+        model = CustomUser
+        fields = ('id','username','first_name','last_name','email','gender','phonenumber','profilePicture','interests')
     
+    
+    
+class FollowListSerializer(serializers.ModelSerializer):
+    to_user = UserSerializer(read_only=True)
+    from_user = UserSerializer(read_only=True)
+
+    class Meta:
+        model = Follow
+        fields = "__all__"
+
+    def create(self, validated_data): #post
+        user_id =self.context['request'].user.id
+        validated_data['from_user'].id=user_id
+        return Follow.objects.create(**validated_data)  
 
 
-
-class FollowSerializer(serializers.ModelSerializer):
+class FollowCreateAndDetailsSerializer(serializers.ModelSerializer):
 
     def create(self, validated_data): #post
         user_id =self.context['request'].user.id
