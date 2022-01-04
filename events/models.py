@@ -14,6 +14,6 @@ class Event(models.Model):
     EventStartTime  = models.DateTimeField(null=True)
     EventCreator    = models.ForeignKey(settings.AUTH_USER_MODEL,on_delete=models.CASCADE, null=True)
     EventParticipants = ListTextField(  base_field=IntegerField(),
-                                        size=50,  null=True, default = 'None') 
+                                        size=50,  null=True , default=0) 
 
 

@@ -26,7 +26,7 @@ class EventListSerialzer(serializers.ModelSerializer):
 
     def create(self, validated_data): #post
         user_id =self.context['request'].user.id
-        # validated_data['EventCreator'].id=user_id
+        validated_data['EventCreator'].id=user_id
         return Event.objects.create(**validated_data)
 
     
