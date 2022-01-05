@@ -8,7 +8,7 @@ class CustomUser(AbstractUser):
     user          = models.OneToOneField(settings.AUTH_USER_MODEL, related_name="profile", on_delete=models.CASCADE, null = True)
     gender        = models.CharField(max_length=26,choices=[('Male', 'Male'), ('Female', 'Female')],default='Male')
     phonenumber   = models.IntegerField(null=True)
-    profilePicture= models.ImageField(upload_to ='ProfilePictures/', default='ProfilePictures/default.jpg')
+    profilePicture= models.URLField(max_length=500, default='https://avatar-management--avatars.us-west-2.prod.public.atl-paas.net/:/128')
     interests     = MultiSelectField(max_length=100,null=True, choices=[  
                                                 ('Reading', 'Reading'),
                                                 ('Cycling', 'Cycling'),
