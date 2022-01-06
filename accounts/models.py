@@ -5,7 +5,6 @@ from django.conf import settings
 
 class CustomUser(AbstractUser):
     # user for chat id for current
-    user          = models.OneToOneField(settings.AUTH_USER_MODEL, related_name="profile", on_delete=models.CASCADE, null = True)
     gender        = models.CharField(max_length=26,choices=[('Male', 'Male'), ('Female', 'Female')],default='Male')
     phonenumber   = models.IntegerField(null=True)
     profilePicture= models.URLField(max_length=1000,default='https://avatar-management--avatars.us-west-2.prod.public.atl-paas.net/:/128')
