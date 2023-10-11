@@ -26,8 +26,7 @@ DEBUG = env.bool("DEBUG")
 ALLOWED_HOSTS = tuple(env.list("ALLOWED_HOSTS"))
 CSRF_COOKIE_DOMAIN = 'herokuapp.com'
 CSRF_TRUSTED_ORIGINS = env.list("CSRF_TRUSTED_ORIGINS")
-# CORS_ORIGIN_WHITELIST = tuple(env.list("ALLOWED_ORIGINS"))
-# CORS_ALLOW_ALL_ORIGINS = env.bool("ALLOW_ALL_ORIGINS")
+
 
 INSTALLED_APPS = [
     "whitenoise.runserver_nostatic",
