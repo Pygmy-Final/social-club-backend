@@ -196,3 +196,9 @@ SIMPLE_JWT = {
 CORS_ORIGIN_WHITELIST = tuple(env.list("ALLOWED_ORIGINS"))
 CORS_ALLOW_ALL_ORIGINS = env.bool("ALLOW_ALL_ORIGINS")
 CSRF_TRUSTED_ORIGINS = tuple(env.list("ALLOWED_ORIGINS"))
+CORS_ALLOW_ORIGINS = [
+    "http://localhost",
+    "http://127.0.0.1",
+    "http://0.0.0.0",
+    ".vercel.app",  # Replace with your actual Vercel app URL
+]
